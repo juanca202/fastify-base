@@ -7,6 +7,7 @@
 // (docs/standards/coding-style.md).
 // =============================================================================
 import { execSync } from 'node:child_process';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { colorStatus } from '../lib/colors.mjs';
@@ -39,9 +40,24 @@ const run = (cmd) => execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: repoR
 
 // --- CR-001 (bloqueante) -----------------------------------------------------
 // El análisis estático DEBE terminar sin errores.
-check('CR-001', 'bloqueante', 'El análisis estático DEBE terminar sin errores', () => {
-  run('npm run lint');
-});
+// `npm run lint` ya es una compuerta propia de quality-check (check "linter"): re-ejecutarla aquí
+// duplicaría el trabajo y acoplaría dos compuertas que deben poder correr por separado. Este chequeo
+// audita el cableado (el script existe e invoca eslint) y deja que quality-check reporte los errores.
+check(
+  'CR-001',
+  'bloqueante',
+  'regla de lint bloqueante activa [package.json script: lint → eslint; eslint.config.js]',
+  () => {
+    const pkg = JSON.parse(readFileSync(join(repoRoot, 'package.json'), 'utf8'));
+    const lintScript = pkg.scripts?.lint ?? '';
+    if (!/\beslint\b/.test(lintScript)) {
+      throw new Error('package.json scripts.lint no invoca eslint');
+    }
+    if (!existsSync(join(repoRoot, 'eslint.config.js'))) {
+      throw new Error('no existe eslint.config.js');
+    }
+  },
+);
 
 // --- CR-002 (bloqueante) -----------------------------------------------------
 // El código fuente DEBE cumplir el formateo del proyecto.
