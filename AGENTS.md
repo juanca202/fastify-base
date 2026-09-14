@@ -3,7 +3,7 @@
 - @.agents/MEMORY.md — Preferencias del proyecto
 - @docs/adr/README.md — Índice de decisiones arquitectónicas <!-- omitir esta línea y la siguiente si este repositorio está clasificado "Solo specs" (siempre el caso del repositorio de especificaciones en modo multi-repo) — nunca recibe estos índices -->
 - @docs/standards/README.md — Índice de estándares de arquitectura
-- README.md — Acerca del proyecto
+- @README.md — Acerca del proyecto
 
 # Reglas generales
 

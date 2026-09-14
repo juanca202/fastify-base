@@ -24,10 +24,10 @@ Ninguna.
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito   | Descripción                                                | Origen                                       | Automatizable | Enfoque    | Verificación |
-| ------ | ----------- | ---------------------------------------------------------- | -------------------------------------------- | ------------- | ---------- | ------------ |
-| CR-001 | lint-format | El análisis estático **DEBE** terminar sin errores         | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | yes          |
-| CR-002 | lint-format | El código fuente **DEBE** cumplir el formateo del proyecto | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | yes          |
+| ID     | Requisito   | Descripción                                                | Origen                                       | Automatizable | Enfoque    | Verificación                                                          |
+| ------ | ----------- | ---------------------------------------------------------- | -------------------------------------------- | ------------- | ---------- | --------------------------------------------------------------------- |
+| CR-001 | lint-format | El análisis estático **DEBE** terminar sin errores         | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
+| CR-002 | lint-format | El código fuente **DEBE** cumplir el formateo del proyecto | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
 
 ## Referencias
 

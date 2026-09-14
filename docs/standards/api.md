@@ -24,11 +24,11 @@ La UI de documentación (`/docs`) y los recursos estáticos asociados no forman 
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito | Descripción                                                                            | Origen                                                     | Automatizable | Enfoque    | Verificación |
-| ------ | --------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------- | ---------- | ------------ |
-| CR-001 | api-first | Las rutas del contrato público **DEBEN** declarar esquemas Zod de petición y respuesta | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | yes          |
-| CR-002 | api-first | El servicio **DEBE** publicar un documento OpenAPI 3.x generado desde esos esquemas    | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | yes          |
-| CR-003 | api-first | La documentación interactiva **DEBE** servirse en runtime                              | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | yes          |
+| ID     | Requisito | Descripción                                                                            | Origen                                                     | Automatizable | Enfoque    | Verificación                                        |
+| ------ | --------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------- | ---------- | --------------------------------------------------- |
+| CR-001 | api-first | Las rutas del contrato público **DEBEN** declarar esquemas Zod de petición y respuesta | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | [checks/api.mjs](../../scripts/arch/checks/api.mjs) |
+| CR-002 | api-first | El servicio **DEBE** publicar un documento OpenAPI 3.x generado desde esos esquemas    | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | [checks/api.mjs](../../scripts/arch/checks/api.mjs) |
+| CR-003 | api-first | La documentación interactiva **DEBE** servirse en runtime                              | [ADR-001](../adr/ADR-001-api-first-fastify-zod-openapi.md) | yes           | bloqueante | [checks/api.mjs](../../scripts/arch/checks/api.mjs) |
 
 ## Referencias
 

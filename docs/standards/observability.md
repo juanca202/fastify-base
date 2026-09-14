@@ -24,11 +24,11 @@ Si `OTEL_SDK_DISABLED=true`, el SDK no arranca y no se emiten trazas. El transpo
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito             | Descripción                                                                         | Origen                                                         | Automatizable | Enfoque    | Verificación |
-| ------ | --------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------- | ---------- | ------------ |
-| CR-001 | runtime-observability | Los logs de aplicación **DEBEN** ser estructurados vía el logger de Fastify (Pino)  | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | yes          |
-| CR-002 | runtime-observability | Las trazas **DEBEN** emitirse con OpenTelemetry salvo que el SDK esté deshabilitado | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | yes          |
-| CR-003 | runtime-observability | `/health` y `/docs` **DEBEN** quedar fuera del tracing                              | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | yes          |
+| ID     | Requisito             | Descripción                                                                         | Origen                                                         | Automatizable | Enfoque    | Verificación                                                            |
+| ------ | --------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------- | ---------- | ----------------------------------------------------------------------- |
+| CR-001 | runtime-observability | Los logs de aplicación **DEBEN** ser estructurados vía el logger de Fastify (Pino)  | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | [checks/observability.mjs](../../scripts/arch/checks/observability.mjs) |
+| CR-002 | runtime-observability | Las trazas **DEBEN** emitirse con OpenTelemetry salvo que el SDK esté deshabilitado | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | [checks/observability.mjs](../../scripts/arch/checks/observability.mjs) |
+| CR-003 | runtime-observability | `/health` y `/docs` **DEBEN** quedar fuera del tracing                              | [ADR-002](../adr/ADR-002-pino-opentelemetry-observabilidad.md) | yes           | bloqueante | [checks/observability.mjs](../../scripts/arch/checks/observability.mjs) |
 
 ## Referencias
 
