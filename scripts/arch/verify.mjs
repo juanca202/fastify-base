@@ -35,6 +35,7 @@ import { readdirSync, existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { stripAnsi } from './lib/colors.mjs';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const checksDir = join(scriptDir, 'checks');
@@ -66,6 +67,16 @@ if (selected.length === 0) {
   process.exit(0);
 }
 
+// Los checks corren con stdout por pipe (nunca TTY), así que su detección
+// automática de color siempre da falso y jamás colorearían por sí solos. Si ESTA
+// salida sí es una terminal real y el usuario no fijó ya su propia política
+// (NO_COLOR / FORCE_COLOR), se les fuerza color vía FORCE_COLOR=1 —
+// util.styleText la respeta aunque el stream no sea TTY.
+const childEnv =
+  process.stdout.isTTY && !('NO_COLOR' in process.env) && !('FORCE_COLOR' in process.env)
+    ? { ...process.env, FORCE_COLOR: '1' }
+    : process.env;
+
 let pass = 0;
 let warn = 0;
 let fail = 0;
@@ -74,10 +85,14 @@ const failedStandards = [];
 for (const file of selected) {
   const slug = file.replace(/\.(mjs|js)$/, '');
   console.log(`\n=== ${slug} (checks/${file}) ===`);
-  const res = spawnSync(process.execPath, [join(checksDir, file)], { encoding: 'utf8' });
+  const res = spawnSync(process.execPath, [join(checksDir, file)], {
+    encoding: 'utf8',
+    env: childEnv,
+  });
   if (res.stdout) process.stdout.write(res.stdout);
   if (res.stderr) process.stderr.write(res.stderr);
-  for (const line of (res.stdout ?? '').split('\n')) {
+  for (const rawLine of (res.stdout ?? '').split('\n')) {
+    const line = stripAnsi(rawLine); // las líneas de protocolo pueden llegar coloreadas
     if (line.startsWith('PASS ')) pass += 1;
     else if (line.startsWith('WARN ')) warn += 1;
     else if (line.startsWith('FAIL ')) fail += 1;

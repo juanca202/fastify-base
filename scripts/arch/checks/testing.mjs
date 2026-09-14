@@ -10,6 +10,7 @@ import { execSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { colorStatus } from '../lib/colors.mjs';
 
 const STANDARD = 'testing';
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -18,11 +19,11 @@ let blockingFailures = 0;
 function check(cr, enfoque, descripcion, fn) {
   try {
     fn();
-    console.log(`PASS ${STANDARD}/${cr} — ${descripcion}`);
+    console.log(`${colorStatus('PASS')} ${STANDARD}/${cr} — ${descripcion}`);
   } catch (err) {
     const status = enfoque === 'warning' ? 'WARN' : 'FAIL';
     if (status === 'FAIL') blockingFailures += 1;
-    console.log(`${status} ${STANDARD}/${cr} — ${descripcion}`);
+    console.log(`${colorStatus(status)} ${STANDARD}/${cr} — ${descripcion}`);
     const detail = err?.stdout?.toString?.() || err?.message || '';
     if (detail)
       console.log(
@@ -50,15 +51,21 @@ check('CR-001', 'bloqueante', 'Las pruebas unitarias DEBEN ejecutarse con Vitest
 });
 
 // --- CR-002 (bloqueante) -----------------------------------------------------
-// La cobertura de líneas DEBE ser ≥ 80%.
-check('CR-002', 'bloqueante', 'La cobertura de líneas DEBE ser ≥ 80%', () => {
-  run('npm run test:coverage');
-});
+// La cobertura de líneas, sentencias, funciones y ramas DEBE ser ≥ 80% en cada dimensión.
+// vitest.config.ts declara los cuatro umbrales; npm run test:coverage falla si alguno no se cumple.
+check(
+  'CR-002',
+  'bloqueante',
+  'La cobertura de líneas, sentencias, funciones y ramas DEBE ser ≥ 80% en cada dimensión',
+  () => {
+    run('npm run test:coverage');
+  },
+);
 
 // --- CR-003 (bloqueante) -----------------------------------------------------
 // Los endpoints públicos DEBEN tener pruebas de API.
 check('CR-003', 'bloqueante', 'Los endpoints públicos DEBEN tener pruebas de API', () => {
-  run('npm run test:api');
+  run('npm run test:e2e');
 });
 
 process.exit(blockingFailures > 0 ? 1 : 0);
