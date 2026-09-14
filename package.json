@@ -13,15 +13,15 @@
     "prestart": "npm run build",
     "start": "node dist/server.js",
     "test": "vitest run",
+    "test:arch": "node scripts/arch/verify.mjs",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:api": "vitest run test/health.test.ts test/openapi.test.ts",
+    "test:e2e": "vitest run test/health.test.ts test/openapi.test.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc -p tsconfig.json",
-    "arch": "node scripts/arch/verify.mjs"
+    "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@fastify/otel": "^0.21.0",
