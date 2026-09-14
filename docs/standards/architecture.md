@@ -2,7 +2,7 @@
 name: Architecture Standards
 domain: architecture
 status: Active
-last_update: 2026-09-06
+last_update: 2026-09-14
 source_adrs: [ADR-005, ADR-006]
 tags: [architecture, modular-monolith, fastify, plugins]
 ---
@@ -35,12 +35,17 @@ Los puntos de enganche de autenticación y persistencia (`src/plugins/auth.ts`, 
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito            | Descripción                                                                                                                                          | Origen                                                        | Automatizable | Enfoque    | Verificación                                                          |
-| ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------- | ---------- | --------------------------------------------------------------------- |
-| CR-001 | modular-monolith     | El código de aplicación **NO DEBE** organizarse en carpetas de capa técnica en la raíz de `src/` (`controllers/`, `services/`, `models/`, `routes/`) | [ADR-005](../adr/ADR-005-monolito-modular-adaptador-http.md)  | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
-| CR-002 | modular-monolith     | El servicio **DEBE** separar el entrypoint de proceso de la composition HTTP                                                                         | [ADR-005](../adr/ADR-005-monolito-modular-adaptador-http.md)  | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
-| CR-003 | modular-monolith     | Los componentes de negocio **DEBEN** vivir bajo `src/modules/`                                                                                       | [ADR-005](../adr/ADR-005-monolito-modular-adaptador-http.md)  | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
-| CR-004 | plugin-encapsulation | Cada módulo HTTP **DEBE** registrarse con la opción `prefix`                                                                                         | [ADR-006](../adr/ADR-006-plugins-encapsulados-por-feature.md) | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| ID     | Requisito            | Descripción                                                                                                                                          | Automatizable | Enfoque    | Verificación                                                          |
+| ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------- | --------------------------------------------------------------------- |
+| CR-001 | modular-monolith     | El código de aplicación **NO DEBE** organizarse en carpetas de capa técnica en la raíz de `src/` (`controllers/`, `services/`, `models/`, `routes/`) | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-002 | modular-monolith     | El servicio **DEBE** separar el entrypoint de proceso de la composition HTTP                                                                         | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-003 | modular-monolith     | Los componentes de negocio **DEBEN** vivir bajo `src/modules/`                                                                                       | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-004 | plugin-encapsulation | Cada módulo HTTP **DEBE** registrarse con la opción `prefix`                                                                                         | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-005 | modular-monolith     | Fastify **DEBE** quedar confinado al adaptador HTTP; un servicio de módulo, cuando exista, **NO DEBE** importar tipos HTTP de Fastify                | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-006 | modular-monolith     | Las carpetas de dominio o acceso a datos **NO DEBEN** crearse vacías                                                                                 | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-007 | plugin-encapsulation | Los módulos bajo `src/modules/` **NO DEBEN** envolverse con `fastify-plugin`                                                                         | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-008 | plugin-encapsulation | Los plugins de infra bajo `src/plugins/` **DEBEN** envolverse con `fastify-plugin` y **NO DEBEN** registrar rutas de negocio                         | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
+| CR-009 | plugin-encapsulation | Un módulo **NO DEBE** importar archivos internos de otro módulo                                                                                      | yes           | bloqueante | [checks/architecture.mjs](../../scripts/arch/checks/architecture.mjs) |
 
 ## Referencias
 

@@ -1,12 +1,19 @@
 ---
 id: ADR-005
 status: Accepted
-last_update: 2026-09-06
+last_update: 2026-09-14
 deciders: [juanca202]
 tags: [architecture, nodejs, modular-monolith, fastify]
 supersedes: null
 superseded_by: null
-emits: [architecture/CR-001, architecture/CR-002, architecture/CR-003]
+emits:
+  [
+    architecture/CR-001,
+    architecture/CR-002,
+    architecture/CR-003,
+    architecture/CR-005,
+    architecture/CR-006,
+  ]
 ---
 
 # ADR-005: Servicio Node.js como monolito modular; Fastify como adaptador HTTP

@@ -1,12 +1,12 @@
 ---
 id: ADR-006
 status: Accepted
-last_update: 2026-09-06
+last_update: 2026-09-14
 deciders: [juanca202]
 tags: [architecture, fastify, plugins, encapsulation]
 supersedes: null
 superseded_by: null
-emits: [architecture/CR-004]
+emits: [architecture/CR-004, architecture/CR-007, architecture/CR-008, architecture/CR-009]
 ---
 
 # ADR-006: Features como plugins Fastify encapsulados
