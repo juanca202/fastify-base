@@ -19,4 +19,4 @@
 - **Config:** dotenv
 - **Build:** npm, `tsc` (`tsconfig.build.json`), `tsx` en desarrollo
 - **Calidad:** ESLint 10 + Prettier 3
-- **Testing:** Vitest 5 (unit + cobertura `@vitest/coverage-v8`, umbral de líneas 80%) y Fastify `inject` (API, script `test:api`)
+- **Testing:** Vitest 5 (unit + cobertura `@vitest/coverage-v8`, umbral 80% en líneas, sentencias, funciones y ramas) y Fastify `inject` (API, script `test:e2e`)

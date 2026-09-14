@@ -16,7 +16,7 @@ Normas de verificación automatizada: pruebas unitarias, umbral de cobertura y p
 **ID:** unit-testing
 **Estado:** Active
 
-Las pruebas unitarias se ejecutan con el runner del proyecto y miden cobertura de líneas. Las pruebas unitarias **DEBEN** ejecutarse con Vitest. La cobertura de líneas **DEBE** ser ≥ 80%.
+Las pruebas unitarias se ejecutan con el runner del proyecto y miden cobertura de líneas, sentencias, funciones y ramas. Las pruebas unitarias **DEBEN** ejecutarse con Vitest. La cobertura de líneas, sentencias, funciones y ramas **DEBE** ser ≥ 80% en cada dimensión.
 
 ### Excepciones
 
@@ -35,11 +35,11 @@ Ninguna.
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito    | Descripción                                           | Origen                                             | Automatizable | Enfoque    | Verificación |
-| ------ | ------------ | ----------------------------------------------------- | -------------------------------------------------- | ------------- | ---------- | ------------ |
-| CR-001 | unit-testing | Las pruebas unitarias **DEBEN** ejecutarse con Vitest | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | yes          |
-| CR-002 | unit-testing | La cobertura de líneas **DEBE** ser ≥ 80%             | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | yes          |
-| CR-003 | api-testing  | Los endpoints públicos **DEBEN** tener pruebas de API | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | yes          |
+| ID     | Requisito    | Descripción                                                                                | Origen                                             | Automatizable | Enfoque    | Verificación                                                |
+| ------ | ------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------- | ------------- | ---------- | ----------------------------------------------------------- |
+| CR-001 | unit-testing | Las pruebas unitarias **DEBEN** ejecutarse con Vitest                                      | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
+| CR-002 | unit-testing | La cobertura de líneas, sentencias, funciones y ramas **DEBE** ser ≥ 80% en cada dimensión | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
+| CR-003 | api-testing  | Los endpoints públicos **DEBEN** tener pruebas de API                                      | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
 
 ## Referencias
 
