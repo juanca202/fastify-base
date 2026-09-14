@@ -2,7 +2,7 @@
 name: Testing Standards
 domain: testing
 status: Active
-last_update: 2026-09-06
+last_update: 2026-09-14
 source_adrs: [ADR-004]
 tags: [testing, vitest, coverage]
 ---
@@ -35,11 +35,11 @@ Ninguna.
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito    | Descripción                                                                                | Origen                                             | Automatizable | Enfoque    | Verificación                                                |
-| ------ | ------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------- | ------------- | ---------- | ----------------------------------------------------------- |
-| CR-001 | unit-testing | Las pruebas unitarias **DEBEN** ejecutarse con Vitest                                      | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
-| CR-002 | unit-testing | La cobertura de líneas, sentencias, funciones y ramas **DEBE** ser ≥ 80% en cada dimensión | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
-| CR-003 | api-testing  | Los endpoints públicos **DEBEN** tener pruebas de API                                      | [ADR-004](../adr/ADR-004-vitest-fastify-inject.md) | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
+| ID     | Requisito    | Descripción                                                                                | Automatizable | Enfoque    | Verificación                                                |
+| ------ | ------------ | ------------------------------------------------------------------------------------------ | ------------- | ---------- | ----------------------------------------------------------- |
+| CR-001 | unit-testing | Las pruebas unitarias **DEBEN** ejecutarse con Vitest                                      | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
+| CR-002 | unit-testing | La cobertura de líneas, sentencias, funciones y ramas **DEBE** ser ≥ 80% en cada dimensión | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
+| CR-003 | api-testing  | Los endpoints públicos **DEBEN** tener pruebas de API                                      | yes           | bloqueante | [checks/testing.mjs](../../scripts/arch/checks/testing.mjs) |
 
 ## Referencias
 

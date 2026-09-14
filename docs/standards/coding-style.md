@@ -2,7 +2,7 @@
 name: Coding Style Standards
 domain: coding-style
 status: Active
-last_update: 2026-09-06
+last_update: 2026-09-14
 source_adrs: [ADR-003]
 tags: [coding-style, eslint, prettier]
 ---
@@ -24,10 +24,10 @@ Ninguna.
 
 ## Criterios de cumplimiento
 
-| ID     | Requisito   | Descripción                                                | Origen                                       | Automatizable | Enfoque    | Verificación                                                          |
-| ------ | ----------- | ---------------------------------------------------------- | -------------------------------------------- | ------------- | ---------- | --------------------------------------------------------------------- |
-| CR-001 | lint-format | El análisis estático **DEBE** terminar sin errores         | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
-| CR-002 | lint-format | El código fuente **DEBE** cumplir el formateo del proyecto | [ADR-003](../adr/ADR-003-eslint-prettier.md) | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
+| ID     | Requisito   | Descripción                                                | Automatizable | Enfoque    | Verificación                                                          |
+| ------ | ----------- | ---------------------------------------------------------- | ------------- | ---------- | --------------------------------------------------------------------- |
+| CR-001 | lint-format | El análisis estático **DEBE** terminar sin errores         | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
+| CR-002 | lint-format | El código fuente **DEBE** cumplir el formateo del proyecto | yes           | bloqueante | [checks/coding-style.mjs](../../scripts/arch/checks/coding-style.mjs) |
 
 ## Referencias
 
