@@ -3,5 +3,6 @@ dist
 coverage
 .env
 .sdd-devkit/.env
+.sdd-devkit/quality-check-run.json
 *.db
 .DS_Store
