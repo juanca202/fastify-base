@@ -6,3 +6,4 @@ coverage
 .sdd-devkit/quality-check-run.json
 *.db
 .DS_Store
+.tmp/
