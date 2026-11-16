@@ -9,5 +9,6 @@ Catálogo de las normas de arquitectura del proyecto, agrupadas por dominio. Sir
 | [API Standards](api.md) | Active |
 | [Architecture Standards](architecture.md) | Active |
 | [Coding Style Standards](coding-style.md) | Active |
+| [DevOps Standards](devops.md) | Active |
 | [Observability Standards](observability.md) | Active |
 | [Testing Standards](testing.md) | Active |

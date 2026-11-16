@@ -12,3 +12,4 @@ Catálogo de las decisiones arquitectónicas del proyecto. Sirve para localizar 
 | [ADR-004: Vitest e inject de Fastify para pruebas](ADR-004-vitest-fastify-inject.md) | Accepted |
 | [ADR-005: Servicio Node.js como monolito modular; Fastify como adaptador HTTP](ADR-005-monolito-modular-adaptador-http.md) | Accepted |
 | [ADR-006: Features como plugins Fastify encapsulados](ADR-006-plugins-encapsulados-por-feature.md) | Accepted |
+| [ADR-007: Estrategia de branching GitFlow y Conventional Commits](ADR-007-gitflow-conventional-commits.md) | Accepted |

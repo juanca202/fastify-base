@@ -21,7 +21,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fastify/otel": "^1.0.1",
@@ -39,11 +40,14 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "^5.1.0",
     "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "pino-pretty": "^13.2.0",
     "prettier": "^3.10.1",
     "tsx": "^4.23.15",
